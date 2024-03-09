@@ -9,5 +9,5 @@ public class StoreDbContext : DbContext
     {     
     }
 
-    DbSet<Product> Products => Set<Product>();
+    public DbSet<Product> Products => Set<Product>();
 }

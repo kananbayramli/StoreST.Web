@@ -1,0 +1,46 @@
+# ASP.NET Core
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.log
+*.dll
+*.exe
+*.tmp
+*.pidb
+*.dbmdl
+*.jfm
+*.pdb
+*.gpState
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+.history/
+
+# SQL Server
+*.mdf
+*.ldf
+*.bak
+
+# SQL Server Management Studio (SSMS)
+*.sqluser
+*.sqlplan
+*.sqlproj.user
+*.sqlproj.suo
+*.sqlproj.user
+
+# Database project
+*.dbmdl
+*.dbproj.suo
+
+# Other
+*.log
+
+# npm
+node_modules/
+
+# ASP.NET Core wwwroot packages
+wwwroot/lib/

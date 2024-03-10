@@ -23,7 +23,6 @@ public class HomeController : Controller
                 new ProductViewModel{
                     Id = p.Id,
                     Price = p.Price,
-                    Category = p.Category,
                     Name = p.Name,
                     Description = p.Description
                 }).Take(pageSize);

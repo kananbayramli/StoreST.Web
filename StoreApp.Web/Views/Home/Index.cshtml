@@ -1,28 +1,66 @@
 @model ProductListViewModel
 
-<h5>Index Page</h5>
 
-@if(Model.Products.Count() == 0)
-{
-    <p>The End</p>
-}
-
-@foreach(var p in Model.Products)
-{
-    <div>
-        <h3>@p.Name</h3>
-        <p>@p.Description</p>
-        <p>@p.Price</p>
+<div class="row">
+    <div class="col-md-3">
+        Category
     </div>
-}
+    <div class="col-md-9">
+        @if(Model.Products.Count() == 0)
+        {
+            <p>The End</p>
+        }
 
-@* Tag Helper pagination *@
-@* <div page-model="@Model.PageInfo" page-action="Index"></div> *@
+        @foreach(var p in Model.Products)
+        {
+            <div class="card card-outline-secondary mb-2 p-2">
+                <div class="d-flex justify-content-between">
+                    <div>                
+                        <h3>@p.Name</h3>
+                        <p>@p.Description</p>
+                    </div>
+                    <div>
+                        <span class="badge rounded-pill text-bg-success">@p.Price $</span>
+                    </div>
+                </div>
+            </div>
+        }
+
+        @* Tag Helper pagination *@
+        <div 
+            page-model="@Model.PageInfo" 
+            page-action="Index"
+            page-class="btn"
+            page-class-link="btn-outline-secondary"
+            page-class-active="btn-secondary"
+            class="btn-group my-2">
+        </div>
 
 
-@for(var i = 1; i <= Model.PageInfo.TotalPages; i++)
-{
-    <a href="/?page=@i">@i</a>
-}
+
+
+
+
+@* <nav aria-label="Page navigation example">
+    <ul class="pagination">
+        @{int i = 1;}
+        <li class="page-item"><a class="page-link" href="/?page=@i">Previous</a></li>
+        
+        @for(i = 1; i <= Model.PageInfo.TotalPages; i++)
+        {
+            <li class="page-item"><a class="page-link" href="/?page=@i">@i</a></li>
+        }
+
+        <li class="page-item"><a class="page-link" href="/?page=@i">Next</a></li>
+    </ul>
+</nav> *@
+
+
+    </div>
+</div>
+
+
+
+
 
 

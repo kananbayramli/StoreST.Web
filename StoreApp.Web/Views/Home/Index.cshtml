@@ -16,12 +16,13 @@
     </div>
 }
 
-@* @for(var i = 1; i <= Model.PageInfo.TotalPages; i++)
+@* Tag Helper pagination *@
+@* <div page-model="@Model.PageInfo" page-action="Index"></div> *@
+
+
+@for(var i = 1; i <= Model.PageInfo.TotalPages; i++)
 {
     <a href="/?page=@i">@i</a>
-} *@
+}
 
 
-@* Tag Helper pagination *@
-
-<div page-model="@Model.PageInfo" page-action="Index"></div>

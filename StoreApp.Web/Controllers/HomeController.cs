@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using StoreApp.Data.Abstract;
 using StoreApp.Data.Concrete;
 using StoreApp.Web.Models;
@@ -14,25 +15,23 @@ public class HomeController : Controller
         _storeRepository = storeRepository;
     }
     
-    public IActionResult Index(int page = 1)
+    
+
+    public IActionResult Index(string category, int page = 1)
     {
-        var products = _storeRepository
-        .Products
-        .Skip((page -1) * pageSize)  // 1-1=>0*3 =0 ; //2-1=>1*3= 3; //3-1 =>2*3 = 6;
-        .Select(p => 
+        return View(new ProductListViewModel{
+            Products = _storeRepository.GetProductsByCategory(category, page, pageSize).Select(p =>                        //auto mapper yazacam
                 new ProductViewModel{
-                    Id = p.Id,
+                    Id = p.Id,  
                     Price = p.Price,
                     Name = p.Name,
                     Description = p.Description
-                }).Take(pageSize);
+                }),
 
-        return View(new ProductListViewModel{
-            Products = products,
             PageInfo = new PageInfo{
-                TotalItems = _storeRepository.Products.Count(),
                 CurrentPage = page,
-                ItemsPerPage = pageSize
+                ItemsPerPage = pageSize,
+                TotalItems = _storeRepository.GetProductCount(category)
             }
         });
     }

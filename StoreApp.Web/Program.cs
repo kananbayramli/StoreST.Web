@@ -16,6 +16,16 @@ builder.Services.AddScoped<IStoreRepository, EFStoreRepository>();
 var app = builder.Build();
 
 app.UseStaticFiles();
+
+
+//products/telefon => category products list
+app.MapControllerRoute("products_in_category", "products/{category?}", 
+new{controller="Home",action="Index"});
+
+//samsung-s24 => product details
+app.MapControllerRoute("product_details", "{name}", new{controller="Home", action="Details"});
+
+
 app.MapDefaultControllerRoute();
 
 app.Run();

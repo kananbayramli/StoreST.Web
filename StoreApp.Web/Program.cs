@@ -6,6 +6,7 @@ using StoreApp.Web.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
 
@@ -30,5 +31,6 @@ app.MapControllerRoute("product_details", "{name}", new{controller="Home", actio
 
 
 app.MapDefaultControllerRoute();
+app.MapRazorPages();
 
 app.Run();

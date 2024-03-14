@@ -16,10 +16,13 @@ builder.Services.AddDbContext<StoreDbContext>(options =>{
 
 
 builder.Services.AddScoped<IStoreRepository, EFStoreRepository>();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
 
 var app = builder.Build();
 
 app.UseStaticFiles();
+app.UseSession();
 
 
 //products/telefon => category products list

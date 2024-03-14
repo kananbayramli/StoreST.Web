@@ -43,4 +43,5 @@ obj/
 node_modules/
 
 # ASP.NET Core wwwroot packages
-wwwroot/lib/
+**/wwwroot/lib/*
+
